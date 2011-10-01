@@ -6,6 +6,7 @@
     $('textarea.tinymce').each(function (){
             var attr = jQuery.parseJSON($(this).attr('tinymce'));
             var options =  (attr && attr.theme == 'simple') ? tinymce_options.theme.simple : tinymce_options.theme.advanced;
+            if (typeof attr.width !== "undefined") tinymce_options.theme.simple.width = attr.width;
             options.script_url = '{{ asset('/bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.js') }}';
             $(this).tinymce(options);
     });
